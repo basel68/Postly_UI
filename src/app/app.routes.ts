@@ -7,7 +7,17 @@ import { EditCategoryComponent } from './features/categories/edit-category/edit-
 import { BlogpostListComponent } from './features/blog-posts/blogpost-list/blogpost-list.component';
 import { AddBlogpostsComponent } from './features/blog-posts/add-blogposts/add-blogposts.component';
 import { EditBlogpostComponent } from './features/blog-posts/edit-blogpost/edit-blogpost.component';
+import { HomeComponent } from './features/public/home/home.component';
+import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 export const routes: Routes = [
+  {
+    path:'blog/:url',
+    component:BlogDetailsComponent
+  },
+  {
+    path:'',
+    component:HomeComponent
+  },
   {
     path:'admin/categories',
     component:CategoryListComponent
