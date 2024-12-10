@@ -1,4 +1,4 @@
-# Codepulse2
+# Postly
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
 
