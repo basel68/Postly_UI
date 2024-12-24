@@ -7,13 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="">Link</a>
         </li>
+        <ng-container *ngIf="user !== undefined && user.roles.includes('writer')">
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
           <ul class="dropdown-menu">
@@ -22,11 +24,26 @@
             <li><a class="dropdown-item" [routerLink]="['/admin/blogposts']">BlogPosts</a></li>
           </ul>
         </li>
+      </ng-container>
       </ul>
-      <form class="d-flex" role="search">
+
+      <!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> -->
+      <ng-container *ngIf="user===undefined else showLogout">
+        <div class="d-flex">
+          <a [routerLink]="['/login']"  routerLinkActive="router-link-active"  class="btn btn-primary">login</a>
+        </div>
+      </ng-container>
+      <ng-template #showLogout>
+        <div class="d-flex align-items-center">
+          <span class="me-3">{{user!.email}}</span>
+          <a [routerLink]="['/']"  routerLinkActive="router-link-active" (click)="onLogout()" class="btn btn-primary">logout</a>
+        </div>
+      </ng-template>
+
+
     </div>
   </div>
 </nav>
