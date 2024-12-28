@@ -1,3 +1,4 @@
+import { authGuard } from './features/Auth/guard/auth.guard';
 import { Routes } from '@angular/router';
 import { CategoryListComponent } from './features/categories/category-list/category-list.component';
 import { RouterModule } from '@angular/router';
@@ -25,27 +26,33 @@ export const routes: Routes = [
   },
   {
     path:'admin/categories',
-    component:CategoryListComponent
+    component:CategoryListComponent,
+    canActivate:[authGuard]
   },
   {
     path:'admin/categories/addcategory',
-    component:AddCategoryComponent
+    component:AddCategoryComponent,
+    canActivate:[authGuard]
   },
   {
     path:'admin/categories/:id',
-    component:EditCategoryComponent
+    component:EditCategoryComponent,
+    canActivate:[authGuard]
   },
   {
     path:'admin/blogposts',
-    component:BlogpostListComponent
+    component:BlogpostListComponent,
+    canActivate:[authGuard]
   },
   {
     path:'admin/blogposts/add',
-    component:AddBlogpostsComponent
+    component:AddBlogpostsComponent,
+    canActivate:[authGuard]
   },
   {
     path:'admin/blogposts/:id',
-    component:EditBlogpostComponent
+    component:EditBlogpostComponent,
+    canActivate:[authGuard]
   }
 ];
 

@@ -13,7 +13,7 @@ export class BlogpostService {
 
   constructor(private http:HttpClient) { }
   addBlogPost(model:AddBlogPost):Observable<BlogPost>{
-    return this.http.post<BlogPost>(`${environment.apiBaseUrl}/admin/BlogPosts`,model);
+    return this.http.post<BlogPost>(`${environment.apiBaseUrl}/admin/BlogPosts?addAuth=true`,model);
   }
   getAllBlogPosts():Observable<BlogPost[]>{
     return this.http.get<BlogPost[]>(`${environment.apiBaseUrl}/admin/BlogPosts`);
@@ -25,10 +25,10 @@ export class BlogpostService {
     return this.http.get<BlogPost>(`${environment.apiBaseUrl}/admin/BlogPosts/${url}`);
   }
   updateBlogPost(id:string,newModel:UpdateBlogPost){
-    return this.http.put<BlogPost>(`${environment.apiBaseUrl}/admin/BlogPosts/${id}`,newModel);
+    return this.http.put<BlogPost>(`${environment.apiBaseUrl}/admin/BlogPosts/${id}?addAuth=true`,newModel);
   }
   deleteBlogPost(id:string){
-    return this.http.delete<BlogPost>(`${environment.apiBaseUrl}/admin/BlogPosts/${id}`);
+    return this.http.delete<BlogPost>(`${environment.apiBaseUrl}/admin/BlogPosts/${id}?addAuth=true`);
   }
 }
 

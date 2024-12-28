@@ -15,12 +15,49 @@ import { CommonModule } from '@angular/common';
 })
 export class CategoryListComponent implements OnInit {
   categories$?:Observable<Category[]>;
+  categoriesCount?:number;
+  list:number[]=[];
+  pageSize:number=5;
+  pageNumber:number=1;
   constructor(private categoryService:CategoryService){
 
   }
   ngOnInit(): void {
-    this.categories$=this.categoryService.getAllCategories();
+
+    this.categoryService.getCategoryCount().subscribe({
+      next:(count)=>{
+        this.categoriesCount=count;
+        this.list=new Array(Math.ceil(count/this.pageSize));
+        this.categories$=this.categoryService.getAllCategories(undefined,undefined,undefined,this.pageNumber,this.pageSize);
+      }
+    })
+  }
+  onSearch(query:string){
+    this.categories$=this.categoryService.getAllCategories(query);
+
+  }
+  sort(sortDirection:string){
+    this.categories$=this.categoryService.getAllCategories(undefined,"name",sortDirection);
   }
 
+  prevPage(){
+    if(this.pageNumber-1<1){
+      return
+    }
+    this.categories$=this.categoryService.getAllCategories(undefined,undefined,undefined,this.pageNumber-1,this.pageSize);
 
+  }
+
+  nextPage(){
+    if(this.pageNumber+1>this.list.length){
+      return
+    }
+    this.categories$=this.categoryService.getAllCategories(undefined,undefined,undefined,this.pageNumber+1,this.pageSize);
+
+  }
+
+  gotoPage(pageNumber:number){
+    this.categories$=this.categoryService.getAllCategories(undefined,undefined,undefined,pageNumber,this.pageSize);
+    this.pageNumber=pageNumber;
+  }
 }
