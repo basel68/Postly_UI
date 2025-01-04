@@ -7,7 +7,7 @@ import { LoginRequest } from '../models/login-request.model';
 import { environment } from '../../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 
-fdescribe('AuthService', () => {
+describe('AuthService', () => {
   let service: AuthService;
   let httpTestingController:HttpTestingController
   let cookieService:CookieService
