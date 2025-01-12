@@ -9,11 +9,13 @@
               <div class="card-title">
                 <h5>{{blog.title}}</h5>
                 <p class="card-text">{{blog.shortDescription}}</p>
-                <span class="d-flex align-items-end">
-                  <a [routerLink]="['/blog',blog.urlHandle]" class="btn btn-primary">
-                    Read More
-                  </a>
-                </span>
+              </div>
+              <div class="mt-auto">
+              <span class="d-flex align-items-end">
+                <a [routerLink]="['/blog',blog.urlHandle]" class="btn btn-primary">
+                  Read More
+                </a>
+              </span>
               </div>
             </div>
           </div>

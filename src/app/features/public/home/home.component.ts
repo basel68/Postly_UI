@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 export class HomeComponent implements OnInit {
   blogs$?:Observable<BlogPost[]>;
   constructor(private blogpostservice:BlogpostService){
-
+    
   }
   ngOnInit(): void {
     this.blogs$=this.blogpostservice.getAllBlogPosts();
